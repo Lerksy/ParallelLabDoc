@@ -17,7 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         CPUModel.cpp \
         main.cpp \
-        parallelVectors.cpp
+        parallelVectors.cpp \
+        paralleloperations.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -26,4 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     CPUModel.h \
-    parallelVectors.h
+    parallelVectors.h \
+    paralleloperations.h

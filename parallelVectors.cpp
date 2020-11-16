@@ -1,6 +1,6 @@
 #include "parallelVectors.h"
 
-parallel1::parallel1(){
+parallelVectors::parallelVectors(){
     QRandomGenerator generator = QRandomGenerator::securelySeeded();
     defaultSize = 12;
     first.resize(defaultSize);
@@ -10,7 +10,7 @@ parallel1::parallel1(){
     generator.generate(second.begin(), second.end());
 }
 
-parallel1::parallel1(quint64 size)
+parallelVectors::parallelVectors(quint64 size)
 {
     defaultSize = size;
     QRandomGenerator generator = QRandomGenerator::securelySeeded();
@@ -21,31 +21,31 @@ parallel1::parallel1(quint64 size)
     generator.generate(second.begin(), second.end());
 }
 
-void parallel1::summVectors(quint64 start, quint64 stop){
+void parallelVectors::summVectors(quint64 start, quint64 stop){
     if(stop == 0 || stop > defaultSize) stop = defaultSize;
        for(quint32 i = start; i < stop; i++){
             result[i] = first.at(i)+second.at(i);
        }
 }
 
-void parallel1::summVectors(quint16 threads)
+void parallelVectors::summVectors(quint16 threads)
 {
     QVector<QFuture<void>> sumThreads;
     sumThreads.resize(threads);
     for(int i = 0; i < threads; i++){
-        sumThreads[i] = QtConcurrent::run(this, &parallel1::summVectors, defaultSize/threads*i,defaultSize/threads*(i+1));
+        sumThreads[i] = QtConcurrent::run(this, &parallelVectors::summVectors, defaultSize/threads*i,defaultSize/threads*(i+1));
     }
     for(auto i:sumThreads){
         i.waitForFinished();
     }
 }
 
-void parallel1::printResult()
+void parallelVectors::printResult()
 {
     qDebug()<<result;
 }
 
-void parallel1::cleanResult()
+void parallelVectors::cleanResult()
 {
     result.clear();
     result.resize(defaultSize);

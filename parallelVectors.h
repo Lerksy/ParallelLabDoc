@@ -7,10 +7,12 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QtMath>
 
-class parallel1{
+//Variant 1
+
+class parallelVectors{
 public:
-    parallel1();
-    parallel1(quint64 size);
+    parallelVectors();
+    parallelVectors(quint64 size);
     void summVectors(quint64 start, quint64 stop);
     void summVectors(quint16 threads);
     void printResult();

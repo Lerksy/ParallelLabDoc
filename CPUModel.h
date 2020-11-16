@@ -7,7 +7,7 @@
 #include <QFuture>
 #include <iostream>
 
-
+//Variant 1
 
 class CPUProcess{
 public:

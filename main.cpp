@@ -3,6 +3,7 @@
 #include <QVariant>
 #include <iostream>
 #include "parallel1.h"
+#include "parallel2.h"
 
 int main(int argc, char *argv[])
 {
@@ -25,17 +26,20 @@ int main(int argc, char *argv[])
     time1.start();
     threading.summVectors(0, 0);
     oneThread = time1.nsecsElapsed();
-//    threading.printResult();
     threading.cleanResult();
     timem.start();
     threading.summVectors(cores);
     multiThread = timem.nsecsElapsed();
-//    threading.printResult();
     std::cout<<"One thread nanoseconds: "<<oneThread<<"\n"
                 "\t\tmilliseconds: "<<oneThread/1e+6<<"\n"
                 "\t\tseconds: "<<oneThread/1e+9<<"\n"
               "Multi thread nanoseconds: "<<multiThread<<"\n"
               "\tmilliseconds: "<<multiThread/1e+6<<"\n"
                 "\tseconds: "<<multiThread/1e+9;
+
+    std::cout<<std::endl<<std::endl<<std::endl<<"Lab2:\n";
+    CPU myCPU;
+    myCPU.exec();
+    std::cout<<myCPU.summary().toStdString();
     return a.exec();
 }

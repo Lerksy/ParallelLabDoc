@@ -2,8 +2,8 @@
 #include <QElapsedTimer>
 #include <QVariant>
 #include <iostream>
-#include "parallel1.h"
-#include "parallel2.h"
+#include "parallelVectors.h"
+#include "CPUModel.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,4 +1,4 @@
-#include "parallel2.h"
+#include "CPUModel.h"
 
 CPU::CPU(){
     threads.resize(2);

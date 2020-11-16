@@ -1,4 +1,4 @@
-#include "parallel1.h"
+#include "parallelVectors.h"
 
 parallel1::parallel1(){
     QRandomGenerator generator = QRandomGenerator::securelySeeded();

@@ -1,14 +1,23 @@
 #include "CPUModel.h"
 
 CPU::CPU(){
+    //defining threads amount
     threads.resize(2);
+    //limit of first queue
     threadLimit = 25;
+    //every thr2Exec processes from thread 1, executing 1  process from thread 2
     thr2Exec = 5;
+    //limit of processes to execute
     execLimit = 1000;
+    //zeroing counter of destroyed processes in thread 1
     thr1Destroed = 0;
+    //zeroing counter of created processes in thread 1
     thr1Created = 0;
+    //zeroing counter of maximum amount of processes in thread 2
     thr2max = 0;
+    //making model runnable only once
     isExecuted = false;
+    //setting limit to thread 1
     threads[0].setMyLimit(threadLimit);
 }
 
@@ -32,7 +41,7 @@ void CPU::exec(){
 
 void CPU::processCreator(){
     qint16 thrNum;
-    for(int i = 0; i < execLimit+10; i++){
+    for(int i = 0; i < execLimit+(thr2Exec*2); i++){
         thrNum = QRandomGenerator::global()->bounded(0, 2);
         !threads[thrNum].createProcess() && thrNum == 0 ? thr1Destroed++ :
         thrNum == 0 ? thr1Created++ :

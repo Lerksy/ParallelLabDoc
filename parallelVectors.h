@@ -4,7 +4,7 @@
 #include <QRandomGenerator>
 #include <QDebug>
 #include <QFuture>
-#include <QtConcurrent/QtConcurrent>
+#include <QtConcurrent>
 #include <QtMath>
 
 //Variant 1

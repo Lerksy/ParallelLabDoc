@@ -23,7 +23,7 @@ CPU::CPU(){
 
 void CPU::exec(){
     if(!isExecuted){
-        QFuture<void> creator = QtConcurrent::run(this, &CPU::processCreator);
+        QFuture<void> creator = QtConcurrent::run([&]{this->processCreator();});
         quint32 i = 0;
         QThread::msleep(20);
         do{

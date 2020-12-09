@@ -11,7 +11,8 @@ QString parallelOperations::maxMin(qint16 thrNum){
 
     threads.resize(thrNum);
     for(int i = 0; i < thrNum; i++){
-        threads[i] = QtConcurrent::run(this, &parallelOperations::parallelMaxMin, arraySize/thrNum*i, arraySize/thrNum*(i+1));
+        //threads[i] = QtConcurrent::run(this, &parallelOperations::parallelMaxMin, arraySize/thrNum*i, arraySize/thrNum*(i+1));
+        threads[i] = QtConcurrent::run([&]{return this->parallelMaxMin(arraySize/thrNum*i, arraySize/thrNum*(i+1));});
     }
     for(auto i: threads){
         i.waitForFinished();

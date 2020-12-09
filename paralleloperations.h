@@ -3,7 +3,7 @@
 #include <QVector>
 #include <QPair>
 #include <QFuture>
-#include <QtConcurrent/QtConcurrent>
+#include <QtConcurrent>
 #include <QRandomGenerator>
 
 //My Variant is 1, but i did already sum so i would do #3

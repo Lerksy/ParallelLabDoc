@@ -28,12 +28,12 @@ void parallelVectors::summVectors(quint64 start, quint64 stop){
        }
 }
 
-void parallelVectors::summVectors(quint16 threads)
-{
+void parallelVectors::summVectors(quint16 threads){
     QVector<QFuture<void>> sumThreads;
     sumThreads.resize(threads);
     for(int i = 0; i < threads; i++){
-        sumThreads[i] = QtConcurrent::run(this, &parallelVectors::summVectors, defaultSize/threads*i,defaultSize/threads*(i+1));
+        //sumThreads[i] = QtConcurrent::run(&parallelVectors::summVectors, this, static_cast<quint64>(defaultSize/threads*i), defaultSize/threads*(i+1));
+        sumThreads[i] = QtConcurrent::run([&]{this->summVectors(defaultSize/threads*i, defaultSize/threads*(i+1));});
     }
     for(auto i:sumThreads){
         i.waitForFinished();

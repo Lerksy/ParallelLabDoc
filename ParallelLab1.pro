@@ -1,5 +1,5 @@
 QT -= gui
-QT += core
+QT += core concurrent
 CONFIG += c++17 console
 CONFIG -= app_bundle
 

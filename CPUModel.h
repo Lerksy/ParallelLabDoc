@@ -3,7 +3,7 @@
 #include <QVector>
 #include <QRandomGenerator>
 #include <QThread>
-#include <QtConcurrent/QtConcurrent>
+#include <QtConcurrent>
 #include <QFuture>
 #include <iostream>
 
